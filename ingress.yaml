@@ -10,18 +10,11 @@ spec:
   rules:
   - http:
       paths:
-      - path: /
+      - path: /frontend
         pathType: Prefix
         backend:
           service:
             name: frontend-service
             port:
               number: 80
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8000
 

@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: fastapi-backend
-  namespace: default
 spec:
   replicas: 2
   selector:
@@ -14,19 +13,18 @@ spec:
         app: fastapi
     spec:
       containers:
-        - name: fastapi
-          image: ehdrjsxp/fastapi-app:latest
-          ports:
-            - containerPort: 8000
-          envFrom:
-            - secretRef:
-                name: 
+      - name: fastapi
+        image: ehdrjsxp/fastapi-app:latest
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: my-secret
   strategy:
     canary:
       steps:
-        - setWeight: 20
-        - pause: { duration: 10s }
-        - setWeight: 50
-        - pause: { duration: 10s }
-        - setWeight: 100
-
+      - setWeight: 20
+      - pause: {duration: 10s}
+      - setWeight: 50
+      - pause: {duration: 10s}
+      - setWeight: 100

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: fastapi
-          image: ehdrjsxp/fastapi-app:latest #이름수정
+          image: ghcr.io/ehdrjs1216/memo-backend:latest #이름수정
           ports:
             - containerPort: 8000
           envFrom:

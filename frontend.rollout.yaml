@@ -1,6 +1,5 @@
-#frontend-deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: nginx-frontend
 spec:
@@ -25,19 +24,9 @@ spec:
         - name: nginx-config
           configMap:
             name: nginx-config
----
-#frontedn-service.yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-service
-spec:
-  selector:
-    app: nginx
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: ClusterIP
-
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
 

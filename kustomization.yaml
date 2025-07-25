@@ -2,8 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - memo-frontend.yaml
-  - memo-backend.yaml
+  - backend-rollout.yaml
+  - bakcend-service.yaml
+  - frontend-rollout.yaml
+  - frontend-service.yaml   
   - ingress.yaml
   - secret.yaml
+
 

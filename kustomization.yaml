@@ -3,10 +3,9 @@ kind: Kustomization
 
 resources:
   - backend-rollout.yaml
-  - bakcend-service.yaml
+  - backend-service.yaml
   - frontend-rollout.yaml
   - frontend-service.yaml   
   - ingress.yaml
   - secret.yaml
-
 

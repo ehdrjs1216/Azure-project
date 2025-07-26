@@ -1,32 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: nginx-frontend
+  name: react-frontend
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: react-frontend
   template:
     metadata:
       labels:
-        app: nginx
+        app: react-frontend
     spec:
       containers:
-        - name: nginx
-          image: nginx:latest
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/conf.d
-      volumes:
-        - name: nginx-config
-          configMap:
-            name: nginx-config
+      - name: react-frontend
+        image: ehdrjsxp/react-frontend:latest
+        ports:
+        - containerPort: 80
   strategy:
     canary:
       steps:
-        - setWeight: 50
-        - pause: { duration: 30s }
-
+      - setWeight: 20
+      - pause: {duration: 10s}
+      - setWeight: 50
+      - pause: {duration: 10s}
+      - setWeight: 100

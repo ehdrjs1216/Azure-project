@@ -19,7 +19,7 @@ spec:
         - containerPort: 8000
         envFrom:
         - secretRef:
-            name: my-secret
+            name: mysql-secret
   strategy:
     canary:
       steps:

@@ -4,10 +4,9 @@ metadata:
   name: frontend-service
 spec:
   selector:
-    app: nginx
+    app: react-frontend
   ports:
     - protocol: TCP
-      port: 80       # 클러스터 내부 접근 포트
-      targetPort: 80 # 파드 내부 포트
-  type: ClusterIP     # NodePort나 LoadBalancer로 변경 가능
-
+      port: 80
+      targetPort: 80
+  type: ClusterIP

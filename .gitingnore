@@ -1,5 +1,5 @@
 # 민감 정보 파일 (Git에 올리지 말 것)
-secret.yaml
+mysql-secret.yaml
 *.env
 
 # Node.js 모듈 및 빌드 결과물

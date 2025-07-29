@@ -20,6 +20,8 @@ spec:
         envFrom:
         - secretRef:
             name: mysql-secret
+      imagePullSecrets:
+      - name: regcred
   strategy:
     canary:
       steps:
@@ -28,3 +30,4 @@ spec:
       - setWeight: 50
       - pause: {duration: 10s}
       - setWeight: 100
+

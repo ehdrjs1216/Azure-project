@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: react-frontend
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: react-frontend
@@ -13,16 +13,18 @@ spec:
         app: react-frontend
     spec:
       containers:
-        - name: react-frontend
-          image: ghcr.io/ehdrjs1216/react-frontend:1
-          ports:
-            - containerPort: 80
+      - name: react-frontend
+        image: ehdrjsxp/react-frontend:1
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
   strategy:
     canary:
       steps:
-        - setWeight: 20
-        - pause: {duration: 10s}
-        - setWeight: 50
-        - pause: {duration: 10s}
-        - setWeight: 100
+      - setWeight: 20
+      - pause: {duration: 10s}
+      - setWeight: 50
+      - pause: {duration: 10s}
+      - setWeight: 100
 

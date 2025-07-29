@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: react-frontend
-        image: ehdrjsxp/react-frontend:latest
+        image: ghcr.io/ehdrjs1216/react-frontend:1
         ports:
         - containerPort: 80
   strategy:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: react-frontend
-        image: ehdrjsxp/react-frontend:2
+        image: ehdrjsxp/react-frontend:3
         ports:
         - containerPort: 80
       imagePullSecrets:

@@ -75,4 +75,4 @@ jobs:
           git config user.email "actions@github.com"
           git add backend-rollout.yaml frontend-rollout.yaml
           git commit -m "Update image tags to ${IMAGE_TAG}"
-          git push https://ehdrjs1216:${secrets.Azure-cicd}@github.com/ehdrjs1216/fastapi-react-k8s.git main
+          git push https://ehdrjs1216:${PAT_TOKEN}@github.com/ehdrjs1216/fastapi-react-k8s.git main

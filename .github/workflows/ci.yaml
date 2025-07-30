@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_TAG: ${{ github.sha }}   # 커밋 SHA를 이미지 태그로 사용
-      PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      PAT_TOKEN: ${{ secrets.Azure-cicd }}
 
     steps:
       - uses: actions/checkout@v3

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: ehdrjsxp/fastapi-app:c74bd6c9291340aa645a1ef33b5b468ee90d1676
+        image: ehdrjsxp/fastapi-app:0bf01b64535c739c0b219376a0b59ba62e51d95d
         ports:
         - containerPort: 8000
         envFrom:

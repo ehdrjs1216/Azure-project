@@ -14,14 +14,18 @@ spec:
     spec:
       containers:
       - name: fastapi
+<<<<<<< HEAD
         image: ehdrjsxp/fastapi-app:0bf01b64535c739c0b219376a0b59ba62e51d95d
+=======
+        image: donggunacr.azurecr.io/fastapi-app:0.1
+>>>>>>> b7a1cd4 (Update frontend rollout image to ACR path)
         ports:
         - containerPort: 8000
         envFrom:
         - secretRef:
             name: mysql-secret
       imagePullSecrets:
-      - name: regcred
+      - name: acr-secret
   strategy:
     canary:
       steps:

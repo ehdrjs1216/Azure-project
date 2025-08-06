@@ -14,11 +14,7 @@ spec:
     spec:
       containers:
       - name: react-frontend
-<<<<<<< HEAD
-        image: ehdrjsxp/react-frontend:0bf01b64535c739c0b219376a0b59ba62e51d95d
-=======
         image: donggunacr.azurecr.io/react-frontend:0.1
->>>>>>> b7a1cd4 (Update frontend rollout image to ACR path)
         ports:
         - containerPort: 80
       imagePullSecrets:

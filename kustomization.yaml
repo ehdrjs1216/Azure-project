@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - backend-deploy.yaml
   - backend-service.yaml
-  - nginx-confing.yaml
+  - nginx-config.yaml
   - frontend-deploy.yaml
   - frontend-service.yaml   
   - ingress.yaml

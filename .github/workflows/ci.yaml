@@ -11,17 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 저장소 코드 체크아웃
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v3
 
-      # Azure CLI 로그인 (서비스 프린시플 creds 필요)
       - name: 'Login via Azure CLI'
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # ACR 로그인
       - name: 'Login to Azure Container Registry'
         uses: azure/docker-login@v1
         with:
@@ -29,16 +26,20 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      # 도커 이미지 빌드 및 푸시
       - name: 'Build and push image'
         run: |
           docker build --pull . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
 
-      # Azure Container Instances 배포
       - name: 'Deploy to Azure Container Instances'
         uses: azure/aci-deploy@v1
         with:
           resource-group: ${{ secrets.RESOURCE_GROUP }}
-          d
+          dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
+          image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+          registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          registry-username: ${{ secrets.REGISTRY_USERNAME }}
+          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+          name: aci-sampleapp
+          location: koreacentral
 

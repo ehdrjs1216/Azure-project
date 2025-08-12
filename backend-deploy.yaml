@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+      - name: fastapi
+        image: donggunacr.azurecr.io/fastapi-app:0.1
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: mysql-secret
+      imagePullSecrets:
+      - name: acr-secret
+
